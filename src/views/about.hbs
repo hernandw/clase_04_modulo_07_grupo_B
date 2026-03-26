@@ -1,1 +1,8 @@
 <h2>About Page</h2>
+
+{{#if esExito}}
+<h2 class="exito">{{mensaje}}</h2>
+
+{{else}}
+<h2 class="error">{{mensaje}}</h2>
+{{/if}}

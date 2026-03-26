@@ -3,6 +3,8 @@
 const home = (req, res) => {
   res.render("home", {
     pageTitle: "Inicio",
+    esExito: true,
+    mensaje: 'Bienvenido'
 
   });
 };
@@ -10,6 +12,8 @@ const home = (req, res) => {
 const about = (req, res) => {
   res.render("about", {
     pageTitle: "Quienes Somos",
+    esExito: false,
+    mensaje: 'Adios'
   });
 };
 
