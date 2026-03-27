@@ -26,3 +26,18 @@ export const getAllStudents = async (req, res) => {
     res.status(500).send("Error interno del servidor");
   }
 };
+
+//Eliminar un estudiante (Delete)
+  export const deleteStudent = async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      // Sequelize.destroy borra la fila que coincida con la condición
+      await Student.destroy({ where: { id } });
+      
+      res.redirect('/');
+    } catch (error) {
+      console.error('Error al eliminar:', error);
+      res.status(500).send('No se pudo eliminar al estudiante');
+    }
+  }
