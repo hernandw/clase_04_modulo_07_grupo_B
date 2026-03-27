@@ -1,6 +1,8 @@
 import express from "express";
 import exphbs from "express-handlebars";
 import appRouter from "./routes/appRoutes.js";
+import userRouter from './routes/userRoutes.js'
+import db from "./config/db.js";
 import path from "path";
 
 const __dirname = path.resolve();
@@ -17,6 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "src/public")));
 
 //Sincronizas la BBDD
+const connnectDB = async()=>{
+  try {
+    await db.sync();
+    console.log("DB Conectada")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+connnectDB()
+
 
 //Configuración de Handlebars
 app.set("view engine", "hbs");
@@ -32,7 +45,8 @@ app.engine(
 );
 
 //Rutas
-app.use("/", appRouter);
+app.use("/api", appRouter);
+app.use('/', userRouter)
 
 
 

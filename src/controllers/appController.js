@@ -1,13 +1,13 @@
 
 
 const home = (req, res) => {
-  res.render("home", {
+  res.render("inicio", {
     pageTitle: "Inicio",
     esExito: true,
     mensaje: 'Bienvenido'
 
   });
-};
+}; 
 
 const about = (req, res) => {
   res.render("about", {
@@ -23,4 +23,4 @@ const contact = (req, res) => {
   });
 };
 
-export { home, about, contact };
+export { home,  about, contact };
